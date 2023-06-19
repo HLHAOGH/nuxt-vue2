@@ -1,5 +1,6 @@
 # nuxt-vue
-
+以下目录文件定义导出需为函数
+- middleware、plugins、modules
 ## Build Setup
 
 ```bash
@@ -11,11 +12,42 @@ $ npm run dev
 
 # build for production and launch server
 # npm run start 以生产模式启动一个 Web 服务器 (需要先执行nuxt build)
+# 但是这样可能存在服务挂掉的情况，一旦挂掉只能手动重启。所以推荐使用 pm2 进行启动，pm2 是一个进程守护管理器，可以管理和保持应用一直在线
 $ npm run build
 $ npm run start
-
 # generate static project
 $ npm run generate
+```
+### 部署(使用PM2)
+将执行打包命令后生成的 .nuxt目录、static目录、nuxt.config.js、package.json 等资源拷贝到服务器上
+ - 安装pm2
+ ```bash
+  npm install pm2 -g
+```
+- 进入项目所在的文件夹，执行下面这个命令使用 pm2 启动服务
+```bash
+  pm2 start npm --name "your app name" -- start
+  或
+  pm2 start ./node_modules/nuxt/bin/nuxt.js --name "your app name" # 推荐该命令方式
+```
+
+### pm2命令
+--watch： 在当前目录 + 所有子文件夹中的任何文件更改时监视并重新启动应用程序，并且它将忽略 node_modules 文件夹中的任何更改--ignore-watch="node_modules"
+```bash
+  pm2 ecosystem                        # 生成一个 ecosystem.config.js 文件
+  pm2 startup                          # 开机启动
+  pm2 show 0                           # 查看进程详情
+  pm2 list                             #查看当前的进程列表
+  pm2 stop all                         #停止PM2列表中所有的进程
+  pm2 stop 0                           #停止PM2列表中进程为0的进程
+  pm2 reload all                       #重载PM2列表中所有的进程
+  pm2 reload 0                         #重载PM2列表中进程为0的进程
+  pm2 delete 0                         #删除PM2列表中进程为0的进程
+  pm2 delete all                       #删除PM2列表中所有的进程
+  pm2 logs                             # 查看日志
+  pm2 flush                            # 清空日志
+  pm2 monit                            # 查看监控信息
+  pm2 plus                             # 监控和诊断web界面  
 ```
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).

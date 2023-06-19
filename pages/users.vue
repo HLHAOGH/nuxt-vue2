@@ -3,5 +3,3 @@
   <nuxt-child />
 </template>
 
-将处理这样的请求：
-

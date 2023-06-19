@@ -19,3 +19,4 @@ export const getters = {
     return state.counter++
   }
 }
+
