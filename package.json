@@ -1,0 +1,32 @@
+{
+  "name": "nuxt-vue",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "dev-spa": "nuxt --spa",
+    "build-spa": "nuxt build --spa",
+    "build-analyze": "nuxt build --analyze",
+    "pm2:start": "pm2 start ./node_modules/nuxt/bin/nuxt.js --name nuxt-vue --watch"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "core-js": "^3.25.3",
+    "element-ui": "^2.15.13",
+    "nuxt": "^2.16.3",
+    "vue": "^2.7.10",
+    "vue-server-renderer": "^2.7.10",
+    "vue-template-compiler": "^2.7.10"
+  },
+  "devDependencies": {
+    "@nuxtjs/proxy": "^2.1.0",
+    "@nuxtjs/tailwindcss": "^6.7.2",
+    "autoprefixer": "^10.4.14",
+    "babel-plugin-component": "^1.1.1",
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2"
+  }
+}
