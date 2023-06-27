@@ -23,7 +23,9 @@ export default {
   },
 
   // 全局CSS
-  css: [],
+  css: [
+    '~/assets/css/tailwind.css'
+  ],
 
   // 开发还是生产环境
   dev: IS_DEV,
